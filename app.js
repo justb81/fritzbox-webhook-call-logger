@@ -10,6 +10,8 @@ const net = require("net");
 
 ({TelnetSocket} = require("telnet-stream"));
 
+const transform = require("./modules/transformer");
+
 function run() {
 // create a Socket connection
     let socket = net.createConnection(port, host);
@@ -24,7 +26,7 @@ function run() {
 
 // if we get any data, display it to stdout
     tSocket.on("data", function(buffer) {
-        console.log(buffer.toString("utf8").trim());
+        console.log(transform(buffer.toString()));
         //return process.stdout.write(buffer.toString("utf8"));
     });
 }
