@@ -1,0 +1,13 @@
+{
+  "name": "fritzbox-webhook-call-logger",
+  "version": "1.0.0",
+  "main": "app.js",
+  "repository": "https://github.com/justb81/fritzbox-webhook-call-logger",
+  "license": "MIT",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "telnet-stream": "^1.0.4"
+  }
+}
