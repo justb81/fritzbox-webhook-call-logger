@@ -8,6 +8,7 @@
     "start": "node app.js"
   },
   "dependencies": {
-    "telnet-stream": "^1.0.4"
+    "telnet-stream": "^1.0.4",
+    "node-webhooks": "^1.4.0"
   }
 }
