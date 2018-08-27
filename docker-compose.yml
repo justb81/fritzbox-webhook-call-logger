@@ -1,0 +1,14 @@
+version: "2.1"
+
+services:
+  indexer:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      FRITZBOX_HOST: "192.168.178.1"
+      FRITZBOX_PORT: 1012
+      WEBHOOK: "http://httpbin/post"
+      JSON_SCHEMA: "default"
+  httpbin:
+    image: kennethreitz/httpbin
