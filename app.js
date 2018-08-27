@@ -8,6 +8,10 @@ let TelnetSocket;
 
 const net = require("net");
 
+// Initialize WebHooks module. Init
+let WebHooks = require('node-webhooks');
+let webhookSender;
+
 ({TelnetSocket} = require("telnet-stream"));
 
 const transform = require("./modules/transformer");
@@ -26,11 +30,21 @@ function run() {
 
 // if we get any data, display it to stdout
     tSocket.on("data", function(buffer) {
-        let line = buffer.toString();
+        let line = buffer.toString(), data = transform(line);
         console.debug(line);
-        console.debug(transform(line));
-        //return process.stdout.write(buffer.toString("utf8"));
+        console.debug(data);
+
+        webhookSender.trigger('addEvent', data)
     });
 }
 
+function init(){
+    const webhook_url = process.env.WEBHOOK || '';
+
+    webhookSender = new WebHooks({
+        db: {"addEvent": [webhook_url]}
+    })
+}
+
+init();
 run();
