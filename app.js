@@ -26,7 +26,9 @@ function run() {
 
 // if we get any data, display it to stdout
     tSocket.on("data", function(buffer) {
-        console.log(transform(buffer.toString()));
+        let line = buffer.toString();
+        console.debug(line);
+        console.debug(transform(line));
         //return process.stdout.write(buffer.toString("utf8"));
     });
 }
